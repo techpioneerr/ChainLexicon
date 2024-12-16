@@ -1,0 +1,172 @@
+import tkinter as tk
+from tkinter import ttk
+
+class ChainLexicon:
+    def __init__(self, master):
+        self.master = master
+        master.title("ChainLexicon: Web3 & Base Dictionary")
+        master.geometry("800x600")
+        master.configure(bg="#1a1a2e")
+
+        # Dictionary of Web3 and Base blockchain terms
+        self.web3_dictionary = {
+            "Aave": "A decentralized finance (DeFi) protocol that allows users to lend and borrow cryptocurrencies.",
+            "Airdrop": "A distribution of cryptocurrency tokens or coins to multiple wallet addresses for free, often used for marketing or community building.",
+            "Algorithm": "A set of rules or instructions used in blockchain consensus mechanisms to validate transactions and create new blocks.",
+            "Altcoin": "Any cryptocurrency alternative to Bitcoin, such as Ethereum, Solana, or Base network tokens.",
+            "AML (Anti-Money Laundering)": "Regulations and procedures designed to prevent the generation of income through illegal actions.",
+            "API (Application Programming Interface)": "A set of protocols and tools for building software applications in blockchain ecosystems.",
+            "Arbitrage": "The practice of taking advantage of price differences between different cryptocurrency exchanges.",
+            "Base": "A Layer 2 blockchain network built by Coinbase, designed to be an Ethereum scaling solution.",
+            "Base Layer": "The fundamental blockchain network on which other protocols and applications are built.",
+            "Batcher": "A mechanism in blockchain networks that groups multiple transactions together to improve efficiency and reduce costs.",
+            "Block": "A unit of data containing a list of transactions that is added to the blockchain.",
+            "Block Explorer": "An online tool that allows users to view detailed information about blockchain transactions and blocks.",
+            "Block Height": "The number of blocks in a blockchain from the genesis block to the current block.",
+            "Blockchain": "A decentralized, distributed ledger technology that records transactions across multiple computers.",
+            "Blockchain Trilemma": "The challenge of achieving decentralization, security, and scalability simultaneously in a blockchain network.",
+            "Bridge": "A protocol that enables the transfer of tokens or data between different blockchain networks.",
+            "Bull Market": "A period of time when cryptocurrency prices are rising or expected to rise.",
+            "Burn": "The process of permanently removing cryptocurrency tokens from circulation.",
+            "Cold Storage": "A method of storing cryptocurrency offline to protect it from online threats.",
+            "Consensus Mechanism": "The process by which a blockchain network agrees on the validity of transactions.",
+            "DAO (Decentralized Autonomous Organization)": "An organization represented by rules encoded as computer programs that are transparent, controlled by organization members.",
+            "DApp (Decentralized Application)": "An application built on a decentralized network that does not rely on a single controlling entity.",
+            "Decentralization": "The distribution of power and control away from a central authority in a network.",
+            "Derivative": "A financial contract that derives its value from the performance of an underlying asset or group of assets.",
+            "DeFi (Decentralized Finance)": "A blockchain-based form of finance that does not rely on central financial intermediaries.",
+            "Deterministic Wallet": "A cryptocurrency wallet that generates all keys from a single seed phrase.",
+            "Digital Signature": "A cryptographic method used to verify the authenticity of digital messages or documents.",
+            "EIP (Ethereum Improvement Proposal)": "A design document providing information or describing a new feature for Ethereum.",
+            "ENS (Ethereum Name Service)": "A distributed, open, and extensible naming system based on the Ethereum blockchain.",
+            "Ethereum": "A decentralized, open-source blockchain with smart contract functionality.",
+            "Fiat": "Government-issued currency not backed by a commodity like gold.",
+            "Fork": "A split in a blockchain creating two separate paths, either temporarily or permanently.",
+            "Gas Fee": "The transaction cost required to perform operations on the Ethereum blockchain.",
+            "Genesis Block": "The first block in a blockchain, serving as the foundation of the entire chain.",
+            "Halving": "A periodic event in some cryptocurrencies where the block reward is reduced by half.",
+            "Hard Cap": "The maximum amount of funds a project aims to raise during a token sale.",
+            "Hash": "A fixed-length string of characters generated from input data of any length.",
+            "HODL": "A term derived from 'hold', referring to keeping cryptocurrency long-term despite market volatility.",
+            "Interoperability": "The ability of different blockchain networks to communicate and work together.",
+            "KYC (Know Your Customer)": "A process of verifying the identity of customers to prevent fraud and money laundering.",
+            "Layer 2": "A secondary framework built on top of an existing blockchain to improve scaling and efficiency.",
+            "Liquidity": "The ease with which an asset can be bought or sold without causing significant price movement.",
+            "Mainnet": "The main network of a blockchain where actual transactions take place.",
+            "Market Cap": "The total value of a cryptocurrency, calculated by multiplying total coins by current price.",
+            "Mempool": "A waiting area for unconfirmed transactions in a blockchain network.",
+            "Merkle Tree": "A data structure used in blockchain to efficiently verify the contents of large data structures.",
+            "Miner": "A participant in a blockchain network who validates and adds new transactions to the blockchain.",
+            "Multi-Signature Wallet": "A cryptocurrency wallet that requires multiple keys to authorize a transaction.",
+            "NFT (Non-Fungible Token)": "A unique digital asset representing ownership of specific items using blockchain technology.",
+            "Node": "A computer that participates in a blockchain network by maintaining a copy of the blockchain.",
+            "Nonce": "A number used once in cryptographic communication to prevent replay attacks.",
+            "Oracle": "A service that provides external data to smart contracts on a blockchain.",
+            "Private Key": "A secret cryptographic key used to access and manage cryptocurrency.",
+            "Proof of Stake (PoS)": "A consensus mechanism where validators are chosen to create new blocks based on the number of tokens they hold and are willing to 'stake'.",
+            "Proof of Work (PoW)": "A consensus mechanism where miners solve complex mathematical problems to validate transactions.",
+            "Protocol": "A set of rules governing how data is exchanged within a blockchain network.",
+            "Public Key": "A cryptographic key that can be shared publicly and is used to receive cryptocurrencies.",
+            "Ragequit": "A mechanism in DAOs allowing members to exit and retrieve their share of funds.",
+            "Rollup": "A Layer 2 scaling solution that processes transactions off the main chain and then posts the results back.",
+            "Root Chain": "The main blockchain that provides ultimate security and settlement for Layer 2 solutions.",
+            "Salt": "A random data used as an additional input to a one-way function to protect against attacks.",
+            "Scalability": "The ability of a blockchain network to handle increasing numbers of transactions.",
+            "Seed Phrase": "A list of words that store all the information needed to recover a cryptocurrency wallet.",
+            "Smart Contract": "Self-executing contracts with the terms directly written into code on a blockchain.",
+            "Stablecoin": "A cryptocurrency designed to maintain a stable value relative to a reference asset.",
+            "Staking": "The process of locking up cryptocurrency to support a blockchain network and earn rewards.",
+            "Testnet": "A blockchain network used for testing new features and applications without real value.",
+            "Token": "A digital asset created on an existing blockchain network.",
+            "Token Economics": "The study of the economic systems surrounding cryptocurrency tokens.",
+            "Transaction Fee": "The cost of performing a transaction on a blockchain network.",
+            "Trustless": "A system where participants do not need to trust each other to interact safely.",
+            "USDC": "A stablecoin pegged to the US Dollar, issued by Circle and Coinbase.",
+            "Validator": "A participant who validates transactions and creates new blocks in a Proof of Stake network.",
+            "Wallet": "A digital tool for storing, sending, and receiving cryptocurrencies.",
+            "Web3": "A decentralized online ecosystem based on blockchain technology.",
+            "Wrapped Token": "A tokenized version of another cryptocurrency that allows it to be used on a different blockchain.",
+            "Zero-Knowledge Proof": "A cryptographic method that proves something is true without revealing the underlying information."
+        }
+
+        # Create main frame
+        main_frame = tk.Frame(master, bg="#1a1a2e")
+        main_frame.pack(fill=tk.BOTH, expand=True, padx=20, pady=20)
+
+        # Create left panel for word list
+        left_panel = tk.Frame(main_frame, bg="#16213e", width=250)
+        left_panel.pack(side=tk.LEFT, fill=tk.BOTH, expand=True, padx=(0,10))
+
+        # Create scrollable listbox
+        self.word_listbox = tk.Listbox(
+            left_panel, 
+            bg="#16213e", 
+            fg="white", 
+            selectbackground="#0f3460", 
+            font=("Arial", 12),
+            selectmode=tk.SINGLE
+        )
+        self.word_listbox.pack(side=tk.LEFT, fill=tk.BOTH, expand=True)
+
+        # Scrollbar for word list
+        scrollbar = ttk.Scrollbar(left_panel, orient=tk.VERTICAL, command=self.word_listbox.yview)
+        scrollbar.pack(side=tk.RIGHT, fill=tk.Y)
+        self.word_listbox.config(yscrollcommand=scrollbar.set)
+
+        # Right panel for word meaning
+        right_panel = tk.Frame(main_frame, bg="#16213e", width=550)
+        right_panel.pack(side=tk.RIGHT, fill=tk.BOTH, expand=True)
+
+        # Meaning display area
+        self.meaning_text = tk.Text(
+            right_panel, 
+            bg="#16213e", 
+            fg="white", 
+            font=("Arial", 12), 
+            wrap=tk.WORD,
+            padx=10,
+            pady=10
+        )
+        self.meaning_text.pack(fill=tk.BOTH, expand=True)
+        self.meaning_text.config(state=tk.DISABLED)
+
+        # Populate listbox
+        for word in sorted(self.web3_dictionary.keys()):
+            self.word_listbox.insert(tk.END, word)
+
+        # Bind listbox selection event
+        self.word_listbox.bind('<<ListboxSelect>>', self.show_meaning)
+
+    def show_meaning(self, event):
+        # Enable text widget to modify
+        self.meaning_text.config(state=tk.NORMAL)
+        
+        # Clear previous meaning
+        self.meaning_text.delete(1.0, tk.END)
+        
+        # Get selected word
+        try:
+            selected_indices = self.word_listbox.curselection()
+            if selected_indices:
+                word = self.word_listbox.get(selected_indices[0])
+                meaning = self.web3_dictionary[word]
+                
+                # Insert word as header
+                self.meaning_text.tag_configure("header", font=("Arial", 16, "bold"), foreground="#0f3460")
+                self.meaning_text.insert(tk.END, word + "\n\n", "header")
+                
+                # Insert meaning
+                self.meaning_text.insert(tk.END, meaning)
+        except Exception as e:
+            self.meaning_text.insert(tk.END, f"Error: {str(e)}")
+        
+        # Disable text widget to prevent editing
+        self.meaning_text.config(state=tk.DISABLED)
+
+def main():
+    root = tk.Tk()
+    app = ChainLexicon(root)
+    root.mainloop()
+
+if __name__ == "__main__":
+    main()
